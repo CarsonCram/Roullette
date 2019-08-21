@@ -19,16 +19,28 @@ namespace EX8A
             string GameType = Console.ReadLine();
             
             int winnings;
-            if(GameType == "Numbers" || GameType == "numbers")
+
+            if (GameType == "Numbers" || GameType == "numbers")
             {
+                int num;
+
                 Console.WriteLine("You've chosen to play numbers, Please select " +
                     "a number.");
-                int num = int.Parse(Console.ReadLine());
+                if (Console.ReadLine() == "00")
+                    num = 37;
+                else num = int.Parse(Console.ReadLine());
+                
+
+                if (num > 37 || num < 0)
+                {
+                    throw 
+                }
 
                 if (Bets.Numbers(num) == 1)
                     winnings = bet * 35;
             }
-            if(GameType == "Evens or Odds" || GameType == "evens or odds")
+
+            if (GameType == "Evens or Odds" || GameType == "evens or odds")
             {
                 Console.WriteLine("You've chosen to play Evens or odds," +
                     "Would you like to bet evens or odds?");
@@ -58,36 +70,36 @@ namespace EX8A
             if (GameType == "Dozens" || GameType == "dozens")
             {
                 Console.WriteLine("You've chosen to play Dozens. Which dozen" +
-                    "would you like to play: 1, 2, or 3");
-                int num = int.Parse(Console.ReadLine());
+                    "would you like to play: 1st, 2nd, or 3rd");
+                string input = Console.ReadLine();
 
-                if (Bets.Dozens(num) == 1)
+                if (Bets.Dozens(input) == 1)
                     winnings = bet * 2;
             }
             if (GameType == "Columns" || GameType == "columns")
             {
                 Console.WriteLine("You've chosen to play Columns. Which column" +
-                    "would you like to play: 1, 2, or 3");
-                int num = int.Parse(Console.ReadLine());
+                    "would you like to play: 1st, 2nd, or 3rd");
+                string input = Console.ReadLine();
 
-                if (Bets.Columns(num) == 1)
+                if (Bets.Columns(input) == 1)
                     winnings = bet * 2;
             }
             if (GameType == "Streets" || GameType == "streets")
             {
                 Console.WriteLine("You've chosen to play Streets. Which " +
-                    "street would you like to play: Please choose a number " +
-                    "between 1 and 12");
+                    "street would you like to play: Please choose the first number" +
+                    "in the street. i.e. 1, 4, 7, etc.");
                 int num = int.Parse(Console.ReadLine());
 
                 if (Bets.Streets(num) == 1)
                     winnings = bet * 11;
             }
-            if (GameType == "6 numbers" || GameType == "6 Numbers")
+            if (GameType == "6 Numbers" || GameType == "6 numbers")
             {
                 Console.WriteLine("You've chosen to play 6 Numbers. Which " +
-                    "section would you like to play: Please choose a number " +
-                    "between 1 and 6");
+                    "section would you like to play: Please choose the first number" +
+                    "i.e. 1, 7, 13, etc.");
                 int num = int.Parse(Console.ReadLine());
 
                 if (Bets.DoubleRows(num) == 1)
@@ -106,11 +118,12 @@ namespace EX8A
             }
             if (GameType == "Corner" || GameType == "corner")
             {
-                Console.WriteLine("You've chosen to play Corner. Which " +
-                    "numbers would you like to corner?: Please pick two numbers.");
+                Console.WriteLine("You've chosen to play Corner. Please pick the " +
+                    "bottom left number of the corner you would like to play.");
                 int num = int.Parse(Console.ReadLine());
 
-
+                if (Bets.Corner(num) == 1)
+                    winnings = bet * 8;
             }
         }
     }

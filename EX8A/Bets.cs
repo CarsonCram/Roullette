@@ -57,6 +57,7 @@ namespace EX8A
                 }
             } 
             else return 0;
+            return 0;
         }
 
         //^^
@@ -118,6 +119,7 @@ namespace EX8A
                 }
             }
             else return 0;
+            return 0;
         }
 
         //here I ask the user to give me the first number of the street 

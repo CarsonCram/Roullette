@@ -10,121 +10,202 @@ namespace EX8A
 
             Console.WriteLine("\n\tWelcome to Roullette");
             Console.WriteLine();
+            Console.WriteLine("\n\tYou will have 1000 dollars and ten bets to make" +
+                " as much money as possible, good luck");
             Console.WriteLine();
-            Console.WriteLine("\n\tWhat kind of bet would you like to make?");
-            int bet = int.Parse(Console.ReadLine());
-            Console.WriteLine("\n\t|Numbers|Evens or Odds|Reds or Blacks|" +
-                "Lows or Highs|Dozens|Columns|Streets|6 Numbers|Split|" +
-                "Corner|");
-            string GameType = Console.ReadLine();
-            
-            int winnings;
 
-            if (GameType == "Numbers" || GameType == "numbers")
+            int wallet = 1000;
+            int turn = 10;
+            bool won = false;
+
+            do
             {
-                int num;
-
-                Console.WriteLine("You've chosen to play numbers, Please select " +
-                    "a number.");
-                if (Console.ReadLine() == "00")
-                    num = 37;
-                else num = int.Parse(Console.ReadLine());
-                
-
-                if (num > 37 || num < 0)
+                string game = OtherStuff.GetGame();
+                int bet = OtherStuff.GetBet();
+            
+                if (game == "Numbers")
                 {
-                    throw 
+                    int result = Games.Numbers();
+
+                    if (result == 1)
+                        {
+                            wallet += (bet * 35);
+                            won = true;
+                        }
+                    else
+                        {
+                            wallet -= bet;
+                            won = false;
+                        }
+                    turn--;
+                }
+                if (game == "Evens or Odds")
+                {
+                    int result = Games.EvensOrOdds();
+
+                    if (result == 1)
+                    {
+                        wallet += bet;
+                        won = true;
+                    }
+                    else
+                    {
+                        wallet -= bet;
+                        won = false;
+                    }
+                    turn--;
+                }
+                if (game == "Reds or Blacks")
+                {
+                    int result = Games.RedsOrBlacks();
+
+                    if (result == 1)
+                    {
+                        wallet += bet;
+                        won = true;
+                    }
+                    else
+                    {
+                        wallet -= bet;
+                        won = false;
+                    }
+                    turn--;
+                }
+                if (game == "Lows or Highs")
+                {
+                    int result = Games.LowsOrHighs();
+
+                    if (result == 1)
+                    {
+                        wallet += bet;
+                        won = true;
+                    }
+                    else
+                    {
+                        wallet -= bet;
+                        won = false;
+                    }
+                    turn--;
+                }
+                if (game == "Dozens")
+                {
+                    int result = Games.Dozens();
+
+                    if (result == 1)
+                    {
+                        wallet += bet;
+                        won = true;
+                    }
+                    else
+                    {
+                        wallet -= bet;
+                        won = false;
+                    }
+                    turn--;
+                }
+                if (game == "Columns")
+                {
+                    int result = Games.Columns();
+
+                    if (result == 1)
+                    {
+                        wallet += (bet * 2);
+                        won = true;
+                    }
+                    else
+                    {
+                        wallet -= bet;
+                        won = false;
+                    }
+                    turn--;
+                }
+                if (game == "Streets")
+                {
+                    int result = Games.Streets();
+
+                    if (result == 1)
+                    {
+                        wallet += (bet * 11);
+                        won = true;
+                    }
+                    else
+                    {
+                        wallet -= bet;
+                        won = false;
+                    }
+                    turn--;
+                }
+                if (game == "6 Numbers")
+                {
+                    int result = Games.DoubleRows();
+
+                    if (result == 1)
+                    {
+                        wallet += (bet * 5);
+                        won = true;
+                    }
+                    else
+                    {
+                        wallet -= bet;
+                        won = false;
+                    }
+                    turn--;
+                }
+                if (game == "Split")
+                {
+                    int result = Games.Split();
+
+                    if (result == 1)
+                    {
+                        wallet += (bet * 17);
+                        won = true;
+                    }
+                    else
+                    {
+                        wallet -= bet;
+                        won = false;
+                    }
+                    turn--;
+                }
+                if (game == "Corner")
+                {
+                    int result = Games.Corner();
+
+                    if (result == 1)
+                    {
+                        wallet += (bet * 8);
+                        won = true;
+                    }
+                    else
+                    {
+                        wallet -= bet;
+                        won = false;
+                    }
+                    turn--;
                 }
 
-                if (Bets.Numbers(num) == 1)
-                    winnings = bet * 35;
-            }
+                if(won == true)
+                {
+                    Console.WriteLine($"Congrats you won! You now have {wallet}");
+                }
+                else Console.WriteLine($"Sorry mate you lost, on the bright side you " +
+                    $"still have {wallet}");
 
-            if (GameType == "Evens or Odds" || GameType == "evens or odds")
+            } while (wallet > 0 && turn > 0);
+
+            if (turn == 0 && wallet >= 1000)
             {
-                Console.WriteLine("You've chosen to play Evens or odds," +
-                    "Would you like to bet evens or odds?");
-                string input = Console.ReadLine();
-
-                if (Bets.EvenOrOdd(input) == 1)
-                    winnings = bet;
+                Console.WriteLine($"\n\tCongratulations you won {wallet - 1000}");
+                Console.WriteLine($"\n\tYou're leaving the casino with {wallet}, " +
+                    $"feel free to come again!");
             }
-            if(GameType == "Reds or Blacks" || GameType == "reds or blacks")
+            else if (turn == 0 && wallet <= 1000)
             {
-                Console.WriteLine("You've chosen to play Reds or Blacks, Would" +
-                    "you like to bet reds or blacks?");
-                string input = Console.ReadLine();
-
-                if (Bets.RedsOrBlacks(input) == 1)
-                    winnings = bet;
+                Console.WriteLine("\n\tWe're very sorry you didn't have better luck," +
+                    " maybe next time!");
             }
-            if(GameType == "Lows or Highs" || GameType == "lows or highs")
-            {
-                Console.WriteLine("You've chosen to play Lows or Highs, Would" +
-                    "you like to bet lows or highs?");
-                string input = Console.ReadLine();
-
-                if (Bets.LowOrHigh(input) == 1)
-                    winnings = bet;
-            }
-            if (GameType == "Dozens" || GameType == "dozens")
-            {
-                Console.WriteLine("You've chosen to play Dozens. Which dozen" +
-                    "would you like to play: 1st, 2nd, or 3rd");
-                string input = Console.ReadLine();
-
-                if (Bets.Dozens(input) == 1)
-                    winnings = bet * 2;
-            }
-            if (GameType == "Columns" || GameType == "columns")
-            {
-                Console.WriteLine("You've chosen to play Columns. Which column" +
-                    "would you like to play: 1st, 2nd, or 3rd");
-                string input = Console.ReadLine();
-
-                if (Bets.Columns(input) == 1)
-                    winnings = bet * 2;
-            }
-            if (GameType == "Streets" || GameType == "streets")
-            {
-                Console.WriteLine("You've chosen to play Streets. Which " +
-                    "street would you like to play: Please choose the first number" +
-                    "in the street. i.e. 1, 4, 7, etc.");
-                int num = int.Parse(Console.ReadLine());
-
-                if (Bets.Streets(num) == 1)
-                    winnings = bet * 11;
-            }
-            if (GameType == "6 Numbers" || GameType == "6 numbers")
-            {
-                Console.WriteLine("You've chosen to play 6 Numbers. Which " +
-                    "section would you like to play: Please choose the first number" +
-                    "i.e. 1, 7, 13, etc.");
-                int num = int.Parse(Console.ReadLine());
-
-                if (Bets.DoubleRows(num) == 1)
-                    winnings = bet * 16;
-            }
-            if (GameType == "Split" || GameType == "split")
-            {
-                Console.WriteLine("You've chosen to play Split. Which " +
-                    "number would you like to split?");
-                int num = int.Parse(Console.ReadLine());
-                Console.WriteLine("What number would you like to split that with?");
-                int num2 = int.Parse(Console.ReadLine());          
-
-                if (Bets.Split(num, num2) == 1)
-                    winnings = bet * 17;
-            }
-            if (GameType == "Corner" || GameType == "corner")
-            {
-                Console.WriteLine("You've chosen to play Corner. Please pick the " +
-                    "bottom left number of the corner you would like to play.");
-                int num = int.Parse(Console.ReadLine());
-
-                if (Bets.Corner(num) == 1)
-                    winnings = bet * 8;
-            }
+            else Console.WriteLine("\n\tI'm sorry you have nothing more to bet with, " +
+                    "Sorry you didn't have much luck. Please come again!");
         }
     }
 }

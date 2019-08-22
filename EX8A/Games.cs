@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EX8A
 {
@@ -107,6 +105,7 @@ namespace EX8A
             Console.WriteLine("What number would you like to split that with?");
             int num2 = int.Parse(OtherStuff.GetChoice(Console.ReadLine()));
 
+            
             if (Bets.Split(num, num2) == 1)
                 return 1;
             else return 0;

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EX8A
 {
@@ -17,6 +15,7 @@ namespace EX8A
                 Console.WriteLine("\n\t|Numbers|Evens or Odds|Reds or Blacks|" +
                 "Lows or Highs|Dozens|Columns|Streets|6 Numbers|Split|" +
                 "Corner|");
+                Console.WriteLine();
                 input = Console.ReadLine();
 
                 if (input == "Numbers" || input == "Evens or Odds"
@@ -56,9 +55,16 @@ namespace EX8A
 
         public static int GetBet()
         {
+
             Console.WriteLine("How much would you like to bet?");
             int bet = int.Parse(Console.ReadLine());
-
+            
+            while (bet > Program.wallet)
+            {
+                Console.WriteLine("Sorry, you don't have the funds for that kind of bet," +
+                    "Please bet something within your means.");
+                bet = int.Parse(Console.ReadLine());
+            }
             return bet;
         }
     }

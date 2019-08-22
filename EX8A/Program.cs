@@ -4,6 +4,8 @@ namespace EX8A
 {
     public class Program
     {
+        public static int wallet = 1000;
+
         static void Main(string[] args)
         {
             Console.WriteLine("\n\tEX8A.Program.Main()");
@@ -14,7 +16,6 @@ namespace EX8A
                 " as much money as possible, good luck");
             Console.WriteLine();
 
-            int wallet = 1000;
             int turn = 10;
             bool won = false;
 
@@ -186,10 +187,10 @@ namespace EX8A
 
                 if(won == true)
                 {
-                    Console.WriteLine($"Congrats you won! You now have {wallet}");
+                    Console.WriteLine($"Congrats you won! You now have ${wallet}");
                 }
                 else Console.WriteLine($"Sorry mate you lost, on the bright side you " +
-                    $"still have {wallet}");
+                    $"still have ${wallet}");
 
             } while (wallet > 0 && turn > 0);
 

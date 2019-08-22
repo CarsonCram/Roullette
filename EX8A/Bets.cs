@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EX8A
 {
@@ -10,7 +8,7 @@ namespace EX8A
         //the ball lands on the board. 0 == 0, 37 == 00
         public static int RNG()
         {
-            int i = new Random().Next(0, 37);
+            int i = new Random().Next(0, 38);
             return i;
         }
 
@@ -146,15 +144,18 @@ namespace EX8A
 
         //I created a jagged array to find the numbers directly next to the user inputs
         //there may be a bug here though, I have to review this
-
-            //REVIEW
         public static int Split(int num, int num2)
         {
             if (RNG() == 0 || RNG() == 37)
                 return 0;
-            else if (Board.board[num][num2] == RNG())
-                return 1;
-            else return 0;
+            else
+            {
+                if (Board.Rows[num][num2] == RNG())
+                    return 1;
+                else if (Board.Columns[num][num2] == RNG())
+                    return 1;
+                else return 0;
+            }   
         }
 
         //manipulated the user input question to make this easy.

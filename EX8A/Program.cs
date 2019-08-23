@@ -8,13 +8,7 @@ namespace EX8A
 
         static void Main(string[] args)
         {
-            Console.WriteLine("\n\tEX8A.Program.Main()");
-
-            Console.WriteLine("\n\tWelcome to Roullette");
-            Console.WriteLine();
-            Console.WriteLine("\n\tYou will have 1000 dollars and ten bets to make" +
-                " as much money as possible, good luck");
-            Console.WriteLine();
+            Colores.Board();
 
             int turn = 10;
             bool won = false;
@@ -196,17 +190,19 @@ namespace EX8A
 
             if (turn == 0 && wallet >= 1000)
             {
-                Console.WriteLine($"\n\tCongratulations you won {wallet - 1000}");
-                Console.WriteLine($"\n\tYou're leaving the casino with {wallet}, " +
+                Console.WriteLine($"\n\tCongratulations you won ${wallet - 1000}");
+                Console.WriteLine($"\n\tYou're leaving the casino with ${wallet}, " +
                     $"feel free to come again!");
             }
             else if (turn == 0 && wallet <= 1000)
             {
-                Console.WriteLine("\n\tWe're very sorry you didn't have better luck," +
+                Console.WriteLine($"\n\tYou're leaving the casino with ${wallet}, " +
+                    $"We're very sorry you didn't have better luck," +
                     " maybe next time!");
             }
             else Console.WriteLine("\n\tI'm sorry you have nothing more to bet with, " +
                     "Sorry you didn't have much luck. Please come again!");
+
         }
     }
 }

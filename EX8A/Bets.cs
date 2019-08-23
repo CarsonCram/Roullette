@@ -17,32 +17,53 @@ namespace EX8A
         //determines whether the guess is the same as RNG
         public static int Numbers(int num)
         {
-            return num == RNG() ? 1 : 0;
+            int r = RNG();
+
+            if (r == 37)
+                Console.WriteLine("The ball landed on 00");
+            else
+                Console.WriteLine($"The ball landed on {r}");
+
+            return num == r ? 1 : 0;
         }
 
         //EvenOrOdd is a 49/49/2 bet so I split the RNG 3 ways
         public static int EvenOrOdd(string input)
         {
-            if (RNG() == 0 || RNG() == 37)
+            int r = RNG();
+
+            if (r == 37)
+                Console.WriteLine("The ball landed on 00");
+            else
+                Console.WriteLine($"The ball landed on {r}");
+
+            if (r == 0 || r == 37)
                 return 0;
             else if ((input == "Evens") || (input == "evens")
-                && RNG() % 2 == 0)
+                && r % 2 == 0)
                 return 1;
-            else if ((input == "Odds" || input == "odds") && RNG() % 2 == 1)
+            else if ((input == "Odds" || input == "odds") && r % 2 == 1)
                 return 1;
             else return 0;
         }
 
         //^^
         public static int RedsOrBlacks(string input)
-        {    
-            if (RNG() == 0 || RNG() == 37)
+        {
+            int r = RNG();
+
+            if (r == 37)
+                Console.WriteLine("The ball landed on 00");
+            else
+                Console.WriteLine($"The ball landed on {r}");
+
+            if (r == 0 || r == 37)
                 return 0;
             else if (input == "Reds" || input == "reds")
             {
                 for (int i = 0; i < Board.reds.Length - 1; i++)
                 {
-                    if (Board.reds[i] == RNG())
+                    if (Board.reds[i] == r)
                         return 1;
                 }
             }            
@@ -50,7 +71,7 @@ namespace EX8A
             {
                 for (int i = 0; i < Board.blacks.Length - 1; i++)
                 {
-                    if (Board.blacks[i] == RNG())
+                    if (Board.blacks[i] == r)
                         return 1;
                 }
             } 
@@ -61,13 +82,21 @@ namespace EX8A
         //^^
         public static int LowOrHigh(string input)
         {
-            if (RNG() == 0 || RNG() == 37)
+            int r = RNG();
+
+            if (r == 37)
+                Console.WriteLine("The ball landed on 00");
+            else
+                Console.WriteLine($"The ball landed on {r}");
+
+            if (r == 0 || r == 37)
                 return 0;
-            else if ((input == "Lows" || input == "lows") && RNG() < 19)
+            else if ((input == "Lows" || input == "lows") && r < 19)
                 return 1;
-            else if ((input == "Highs" || input == "highs") && RNG() > 18)
+            else if ((input == "Highs" || input == "highs") && r > 18)
                 return 1;
             else return 0;
+
         }
 
         //this is almost a 33/33/33 chance on this bet. But it's important to remember 
@@ -76,13 +105,20 @@ namespace EX8A
         //TLDR: this is a four way split on the RNG
         public static int Dozens(string input)
         {
-            if (RNG() == 0 || RNG() == 37)
+            int r = RNG();
+
+            if (r == 37)
+                Console.WriteLine("The ball landed on 00");
+            else
+                Console.WriteLine($"The ball landed on {r}");
+
+            if (r == 0 || r == 37)
                 return 0;
-            else if (input == "1st" && RNG() < 13)
-                return 1;
-            else if (input == "3rd" && RNG() > 24)
-                return 1;
-            else if (input == "2nd" && RNG() < 25 && RNG() > 12)
+            else if (input == "1st" && r < 13)
+                return 1;              
+            else if (input == "3rd" && r > 24)
+                return 1;              
+            else if (input == "2nd" && r < 25 && RNG() > 12)
                 return 1;
             else return 0;
         }
@@ -90,13 +126,20 @@ namespace EX8A
         //^^
         public static int Columns(string input)
         {
-            if (RNG() == 0 || RNG() == 37)
+            int r = RNG();
+
+            if (r == 37)
+                Console.WriteLine("The ball landed on 00");
+            else
+                Console.WriteLine($"The ball landed on {r}");
+
+            if (r == 0 || r == 37)
                 return 0;
             else if (input == "1st")
             {
                 for (int i = 0; i < Board.firstColumn.Length - 1; i++)
                 {
-                    if (RNG() == Board.firstColumn[i])
+                    if (r == Board.firstColumn[i])
                         return 1;
                 }
             }
@@ -104,7 +147,7 @@ namespace EX8A
             {
                 for (int i = 0; i < Board.secondColumn.Length - 1; i++)
                 {
-                    if (RNG() == Board.secondColumn[i])
+                    if (r == Board.secondColumn[i])
                         return 1;
                 }
             }
@@ -112,7 +155,7 @@ namespace EX8A
             {
                 for (int i = 0; i < Board.thirdColumn.Length - 1; i++)
                 {
-                    if (RNG() == Board.thirdColumn[i])
+                    if (r == Board.thirdColumn[i])
                         return 1;
                 }
             }
@@ -124,9 +167,16 @@ namespace EX8A
         //which makes it really easy to calculate.
         public static int Streets(int num)
         {
-            if (RNG() == 0 || RNG() == 00)
+            int r = RNG();
+
+            if (r == 37)
+                Console.WriteLine("The ball landed on 00");
+            else
+                Console.WriteLine($"The ball landed on {r}");
+
+            if (r == 0 || r == 00)
                 return 0;
-            else if (RNG() == num || RNG() == num + 1 || RNG() == num + 2)
+            else if (r == num || r == num + 1 || r == num + 2)
                 return 1;
             else return 0;
         }
@@ -135,9 +185,16 @@ namespace EX8A
         //calculate the result
         public static int DoubleRows(int num)
         {
-            if (RNG() == 0 || RNG() == 37)
+            int r = RNG();
+
+            if (r == 37)
+                Console.WriteLine("The ball landed on 00");
+            else
+                Console.WriteLine($"The ball landed on {r}");
+
+            if (r == 0 || r == 37)
                 return 0;
-            else if (RNG() >= num && RNG() <= num + 5)
+            else if (r >= num && r <= num + 5)
                 return 1;
             else return 0;
         }
@@ -146,27 +203,44 @@ namespace EX8A
         //there may be a bug here though, I have to review this
         public static int Split(int num, int num2)
         {
-            if (RNG() == 0 || RNG() == 37)
+            int r = RNG();
+
+            if (r == 37)
+                Console.WriteLine("The ball landed on 00");
+            else
+                Console.WriteLine($"The ball landed on {r}");
+
+            if (r == 0 || r == 37)
                 return 0;
             else
             {
-                if (Board.Rows[num][num2] == RNG())
-                    return 1;
-                else if (Board.Columns[num][num2] == RNG())
+                if (Board.Rows[i][num] == r || Board.Rows[][num2] == r)
                     return 1;
                 else return 0;
-            }   
+            }
+            else
+            {
+                if (Board.Columns[0][num] == r || Board.Columns[1][num] ==r 
+                    || Board.Columns[2][num] == r)
+            }
         }
 
         //manipulated the user input question to make this easy.
         public static int Corner(int num)
         {
-            if (RNG() == 0 || RNG() == 37)
+            int r = RNG();
+
+            if (r == 37)
+                Console.WriteLine("The ball landed on 00");
+            else
+                Console.WriteLine($"The ball landed on {r}");
+
+            if (r == 0 || r == 37)
                 return 0;
             else if (num % 3 == 0 || num == 35 || num == 34)
                 return 0;
-            else if (RNG() == num || RNG() == num + 1 || RNG() == num + 3 
-                || RNG() == num + 4)
+            else if (r == num || r == num + 1 || r == num + 3 
+                || r == num + 4)
                 return 1;
             else return 0;
         }

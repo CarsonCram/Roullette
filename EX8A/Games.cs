@@ -19,7 +19,7 @@ namespace EX8A
         public static int EvensOrOdds()
         {
             Console.WriteLine("You've chosen to play Evens or odds," +
-                    "Would you like to bet evens or odds?");
+                    " Would you like to bet evens or odds?");
             string input = Console.ReadLine();
 
             if (Bets.EvenOrOdd(input) == 1)
@@ -30,7 +30,7 @@ namespace EX8A
         public static int RedsOrBlacks()
         {
             Console.WriteLine("You've chosen to play Reds or Blacks," +
-                "Would you like to bet reds or blacks?");
+                " Would you like to bet reds or blacks?");
             string input = Console.ReadLine();
 
             if (Bets.RedsOrBlacks(input) == 1)
@@ -41,7 +41,7 @@ namespace EX8A
         public static int LowsOrHighs()
         {
             Console.WriteLine("You've chosen to play Lows or Highs, Would" +
-                    "you like to bet lows or highs?");
+                    " you like to bet lows or highs?");
             string input = Console.ReadLine();
 
             if (Bets.LowOrHigh(input) == 1)
@@ -65,7 +65,7 @@ namespace EX8A
         {
 
             Console.WriteLine("You've chosen to play Columns. Which column" +
-                "would you like to play: 1st, 2nd, or 3rd");
+                " would you like to play: 1st, 2nd, or 3rd");
             string input = Console.ReadLine();
 
             if (Bets.Columns(input) == 1)
@@ -77,7 +77,7 @@ namespace EX8A
         {
             Console.WriteLine("You've chosen to play Streets. Which " +
                 "street would you like to play: Please choose the first number" +
-                "in the street. i.e. 1, 4, 7, etc.");
+                " in the street. i.e. 1, 4, 7, etc.");
             int num = int.Parse(OtherStuff.GetChoice(Console.ReadLine()));
 
             if (Bets.Streets(num) == 1)
@@ -89,7 +89,7 @@ namespace EX8A
         {
             Console.WriteLine("You've chosen to play 6 Numbers. Which " +
                 "section would you like to play: Please choose the first number" +
-                "i.e. 1, 7, 13, etc.");
+                " i.e. 1, 7, 13, etc.");
             int num = int.Parse(OtherStuff.GetChoice(Console.ReadLine()));
 
             if (Bets.DoubleRows(num) == 1)

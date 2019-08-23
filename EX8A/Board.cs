@@ -30,7 +30,8 @@ namespace EX8A
             new int[] {22,23,24},
             new int[] {25,26,27},
             new int[] {28,29,30},
-            new int[] {31,32,33}
+            new int[] {31,32,33},
+            new int[] {34,35,36}
         };
 
         public static int[][] Columns =
